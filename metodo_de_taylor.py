@@ -6,18 +6,21 @@ import numpy as np
 def edo1(x, y):
     return (4*x*y+1)/(3*(x**2))
 
+def edo1_derivada(x, y):
+    return (4*x*y-2)/(9*(x**3))
+
 def solucion_exacta(x):
     return -1.8*(x**(4/3))-1/(7*x)
 
 #Funcion para el metodo de euler
-def Euler(a, b, y0, f, n):
+def Taylor(a, b, y0, f, n):
     h = (b - a)/n
     x = a
     y = y0
     x_aprox = [x]
     y_aprox = [y]
     for i in range(0, n):
-        y = y + h*f(x, y)
+        y = y + h*f(x, y)+((h**2)/2)*edo1_derivada(x, y)
         x = a + i*h
         y_aprox.append(y)
         x_aprox.append(x)
@@ -44,7 +47,7 @@ x0_range = [0.5]  # Condiciones iniciales para x
 for i in range(len(y0_range)):
     y0 = y0_range[i]
     x0 = x0_range[i]
-    x, y = Euler(x0, extremo_sup, y0, edo1, N)
+    x, y = Taylor(x0, extremo_sup, y0, edo1, N)
     plt.plot(x, y, label="Solución Aproximada con y0 = " + str(y0))
 error = error_absoluto(solucion_exacta, x, y)
 print("Error absoluto para y0 = " + str(y0) + ": " + str(error[-1]))
@@ -57,6 +60,5 @@ plt.title("Solución de la EDO1 con el Método de Euler")
 plt.legend()
 plt.grid(True)
 plt.show()
-
 
 

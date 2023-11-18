@@ -18,9 +18,11 @@ def Euler_ampliado(a, b, y0, f, n):
     x_aprox = [x]
     y_aprox = [y]
     for i in range(0, n):
+        
         z = y + h*f(x, y)
         y = y + h*(f(x, y) + f(x+h, z))/2
-        x = a + i*h
+        x = x + h
+        
 
         y_aprox.append(y)
         x_aprox.append(x)
@@ -53,8 +55,8 @@ for i in range(len(y0_range)):
     x0 = x0_range[i]
     x, y = Euler_ampliado(x0, extremo_sup, y0, edo1, N)
     plt.plot(x, y, label="Solución Aproximada con y0 = " + str(y0))
-    error = error_absoluto(solucion_exacta, x, y)
-    print("Error absoluto para y0 = " + str(y0) + ": " + str(error))
+error = error_absoluto(solucion_exacta, x, y)
+print("Error absoluto para y0 = " + str(y0) + ": " + str(error[-1]))
 
 
 
