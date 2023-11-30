@@ -17,13 +17,10 @@ def Euler_ampliado(a, b, y0, f, n):
     z = y0
     x_aprox = [x]
     y_aprox = [y]
-    for i in range(0, n):
-        
+    for i in range(0, n):       
         z = y + h*f(x, y)
         y = y + h*(f(x, y) + f(x+h, z))/2
         x = x + h
-        
-
         y_aprox.append(y)
         x_aprox.append(x)
     return x_aprox, y_aprox
