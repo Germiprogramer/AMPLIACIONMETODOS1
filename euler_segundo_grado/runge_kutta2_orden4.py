@@ -1,4 +1,4 @@
-#no esta bien
+#esta bien
 
 import numpy as np
 import matplotlib.pyplot as plt

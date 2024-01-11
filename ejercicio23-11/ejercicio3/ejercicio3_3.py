@@ -26,7 +26,7 @@ def Runge_kutta(a, b, y0, f, n):
 #Pedimos por pantalla los extremos del intervalo
 extremo_inf = float(input("Ingrese el extremo inferior del intervalo: "))
 extremo_sup = float(input("Ingrese el extremo superior del intervalo: "))
-N = 20 #Asumimos un numero de 100 intervalos
+N = 5 #Asumimos un numero de 100 intervalos
 
 #Condiciones iniciales de la primera edo
 y0_range = [0]  # Condiciones iniciales para y
